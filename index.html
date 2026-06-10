@@ -26,13 +26,25 @@
         #img-cont { width: 180px; height: 180px; clip-path: url("#heart-mask"); background: white; margin-bottom: 20px; }
         #img-cont img { width: 100%; height: 100%; object-fit: cover; }
         
-        button { padding: 15px 30px; font-size: 1.1rem; background: #ff4d6d; color: white; border: none; border-radius: 50px; cursor: pointer; font-weight: bold; }
+        button { padding: 15px 30px; font-size: 1.1rem; background: #ff4d6d; color: white; border: none; border-radius: 50px; cursor: pointer; font-weight: bold; transition: background 0.3s; }
+        button:hover { background: #ff3355; }
         
-        #message-box { 
+        .overlay-box { 
             display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
             background: rgba(0,0,0,0.85); color: white; 
             flex-direction: column; justify-content: center; align-items: center; 
-            z-index: 100; padding: 20px; text-align: center;
+            z-index: 100; padding: 25px; text-align: center;
+        }
+        
+        .testo-diario {
+            font-size: 1.1rem;
+            line-height: 1.5;
+            max-width: 90%;
+            max-height: 65vh;
+            overflow-y: auto; 
+            margin-bottom: 25px;
+            padding-right: 5px;
+            white-space: pre-wrap; 
         }
         
         .falling-heart { position: absolute; font-size: 20px; z-index: 1; pointer-events: none; }
@@ -47,16 +59,54 @@
     <div id="main-container">
         <h1>Ti amo tanto ele!!</h1>
         <div id="img-cont"><img src="hellokitty.jpg" alt="Hello Kitty"></div>
-        <button onclick="openMsg()">Cliccami tesoro</button>
+        <button onclick="apriDiario()">Cliccami tesoro</button>
     </div>
 
-    <div id="message-box">
+    <div id="diario-box" class="overlay-box">
+        <div id="testo-pagine" class="testo-diario"></div>
+        <button onclick="prossimaPagina()">Avanti ➡️</button>
+    </div>
+
+    <div id="message-box" class="overlay-box">
         <p id="dedica">Ti amo tantissimo, sei unica per me... ma probabilmente questo l'hai già capito dalla lettera!</p>
-        <button onclick="closeMsg()" style="margin-bottom: 20px;">Chiudi</button>
+        <button onclick="closeMsg()" style="margin-bottom: 20px; background: #555;">Chiudi</button>
         <button id="btn-scappa" onmouseenter="moveBtn()" ontouchstart="moveBtn()">Ti amo di più</button>
     </div>
 
     <script>
+        const pagineDiario = [
+`ciao tesoro, se sei arrivata fin qui significa che abbiamo fatto pace, o per lo meno qualcosa di simile. questo programma l’ho fatto ieri mattina mentre eri al lavoro.
+
+amore, non immagini quanto mi dispiaccia per quello che ho detto; sinceramente mi pento molto. capisco che sicuramente non sia stato bello per entrambi e molto probabilmente ti senti ancora ferita. come biasimarti? so di essere andato oltre il limite, ma non l’ho fatto con l’intenzione di ferirti, questo lo posso giurare.
+
+per me, ele, sei la cosa più importante che esista. sei come la ragazza nei film che ho sempre desiderato e che finalmente ho raggiunto, anzi, in effetti è così. ti amo tantissimo ele, sei la persona più importante della mia vita; per me vieni prima di qualsiasi altro mio parente e pensare che un giorno lo sarai ancora di più mi fa stare meglio.
+
+ogni tanto chiudo gli occhi e penso a come saremo da grandi ed è inutile dirti che mi viene un sorriso. potresti chiederti il perché, e la risposta è semplice: perché è esattamente quello che mi immaginavo alle medie, ma che nascondevo a tutti. pensa, sono passati molti anni da quel 12 settembre del 2019, eppure sono ancora cotto di te; d'altronde è difficile non esserlo di una ragazza bella e intelligente come te.
+
+ti amo tanto ele, e spero che, anche se questo bigliettino non è scritto a mano, ti piaccia comunque. ci ho messo tutto il mio cuore per farlo e spero che ti arrivi. ti amo tanto ele 🤍 ricordatelo sempre. spero che non diventerai mai un semplice ricordo per me, perché ci tengo veramente tanto a te e non ti vorrei mai perdere.
+
+ti amo tantissimo. con affetto, karim`
+        ];
+
+        let paginaCorrente = 0;
+
+        function apriDiario() {
+            paginaCorrente = 0;
+            document.getElementById('testo-pagine').innerText = pagineDiario[paginaCorrente];
+            document.getElementById('diario-box').style.display = 'flex';
+        }
+
+        function prossimaPagina() {
+            paginaCorrente++;
+            if (paginaCorrente < pagineDiario.length) {
+                document.getElementById('testo-pagine').innerText = pagineDiario[paginaCorrente];
+                document.getElementById('testo-pagine').scrollTop = 0;
+            } else {
+                document.getElementById('diario-box').style.display = 'none';
+                openMsg();
+            }
+        }
+
         function openMsg() {
             document.getElementById('message-box').style.display = 'flex';
             for(let i=0; i<30; i++) createExplosionHeart();
@@ -66,7 +116,6 @@
 
         function moveBtn() {
             const b = document.getElementById('btn-scappa');
-            // Assicura che il bottone non esca mai dallo schermo
             b.style.position = 'fixed';
             const x = Math.random() * 60 + 20;
             const y = Math.random() * 60 + 20;
