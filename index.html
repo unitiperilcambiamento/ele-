@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Per Eleonora ❤️</title>
+    <title>per eleonora ❤️</title>
     <style>
         * { box-sizing: border-box; }
         body, html { 
@@ -57,31 +57,31 @@
     <svg width="0" height="0"><clipPath id="heart-mask"><path d="M90 160C35 110 0 70 0 45C0 20 20 0 45 0C60 0 75 5 85 20C95 5 110 0 125 0C150 0 170 20 170 45C170 70 135 110 80 160Z"/></clipPath></svg>
 
     <div id="main-container">
-        <h1>Ti amo tanto ele!!</h1>
-        <div id="img-cont"><img src="hellokitty.jpg" alt="Hello Kitty"></div>
-        <button onclick="apriDiario()">Cliccami tesoro</button>
+        <h1>ti amo tanto ele!!</h1>
+        <div id="img-cont"><img src="hellokitty.jpg" alt="hello kitty"></div>
+        <button onclick="apriDiario()">cliccami tesoro</button>
     </div>
 
     <div id="diario-box" class="overlay-box">
         <div id="testo-pagine" class="testo-diario"></div>
-        <button onclick="prossimaPagina()">Avanti ➡️</button>
+        <button onclick="prossimaPagina()">avanti ➡️</button>
     </div>
 
     <div id="message-box" class="overlay-box">
-        <p id="dedica">Ti amo tantissimo, sei unica per me... ma probabilmente questo l'hai già capito dalla lettera!</p>
-        <button onclick="closeMsg()" style="margin-bottom: 20px; background: #555;">Chiudi</button>
-        <button id="btn-scappa" onmouseenter="moveBtn()" ontouchstart="moveBtn()">Ti amo di più</button>
+        <p id="dedica">ti amo tantissimo, sei unica per me... ma probabilmente questo l'hai già capito dalla lettera!</p>
+        <button onclick="closeMsg()" style="margin-bottom: 20px; background: #555;">chiudi</button>
+        <button id="btn-scappa" onmouseenter="moveBtn()" ontouchstart="moveBtn()">ti amo di più</button>
     </div>
 
     <script>
         const pagineDiario = [
 `ciao tesoro, se sei arrivata fin qui significa che abbiamo fatto pace, o per lo meno qualcosa di simile. questo programma l’ho fatto ieri mattina mentre eri al lavoro.
 
-amore, non immagini quanto mi dispiaccia per quello che ho detto; sinceramente mi pento molto. capisco che sicuramente non sia stato bello per entrambi e molto probabilmente ti senti ancora ferita. come biasimarti? so di essere andato oltre il limite, ma non l’ho fatto con l’intenzione di ferirti, questo lo posso giurare.
+amore, non immagini quanto mi dispiaccia per quello che ho detto, sinceramente mi pento molto. capisco che sicuramente non sia stato bello per entrambi e molto probabilmente ti senti ancora ferita. come biasimarti? so di essere andato oltre il limite, ma non l’ho fatto con l’intenzione di ferirti, questo lo posso giurare.
 
-per me, ele, sei la cosa più importante che esista. sei come la ragazza nei film che ho sempre desiderato e che finalmente ho raggiunto, anzi, in effetti è così. ti amo tantissimo ele, sei la persona più importante della mia vita; per me vieni prima di qualsiasi altro mio parente e pensare che un giorno lo sarai ancora di più mi fa stare meglio.
+per me, ele, sei la cosa più importante che esista. sei come la ragazza nei film che ho sempre desiderato e che finalmente ho raggiunto, anzi, in effetti è così. ti amo tantissimo ele, sei la persona più importante della mia vita, per me vieni prima di qualsiasi altro mio parente e pensare che un giorno lo sarai ancora di più mi fa stare meglio.
 
-ogni tanto chiudo gli occhi e penso a come saremo da grandi ed è inutile dirti che mi viene un sorriso. potresti chiederti il perché, e la risposta è semplice: perché è esattamente quello che mi immaginavo alle medie, ma che nascondevo a tutti. pensa, sono passati molti anni da quel 12 settembre del 2019, eppure sono ancora cotto di te; d'altronde è difficile non esserlo di una ragazza bella e intelligente come te.
+ogni tanto chiudo gli occhi e penso a come saremo da grandi ed è inutile dirti che mi viene un sorriso. potresti chiederti il perché, e la risposta è semplice, perché è esattamente quello che mi immaginavo alle medie, ma che nascondevo a tutti. pensa, sono passati molti anni da quel 12 settembre del 2019, eppure sono ancora cotto di te, d'altronde è difficile non esserlo di una ragazza bella e intelligente come te.
 
 ti amo tanto ele, e spero che, anche se questo bigliettino non è scritto a mano, ti piaccia comunque. ci ho messo tutto il mio cuore per farlo e spero che ti arrivi. ti amo tanto ele 🤍 ricordatelo sempre. spero che non diventerai mai un semplice ricordo per me, perché ci tengo veramente tanto a te e non ti vorrei mai perdere.
 
@@ -94,6 +94,10 @@ ti amo tantissimo. con affetto, karim`
             paginaCorrente = 0;
             document.getElementById('testo-pagine').innerText = pagineDiario[paginaCorrente];
             document.getElementById('diario-box').style.display = 'flex';
+        }
+
+        function prochainePagina() {
+            // mantenuto nome funzione originale per coerenza interna dello script
         }
 
         function prossimaPagina() {
@@ -145,3 +149,4 @@ ti amo tantissimo. con affetto, karim`
     </script>
 </body>
 </html>
+
